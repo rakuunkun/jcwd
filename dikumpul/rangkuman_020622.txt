@@ -1,0 +1,484 @@
+Fundamental
+
+input user biasanya disimpan di RAM, device yang paling cpt utk menyimpan data, dibanding dengan HDD/SSD
+variabel menyimpan sebuah nilai, dan memiliki aturan dalam penulisannya.
+variabel di state agar nanti bisa di call lagi
+
+var name
+name = 'john'
+
+var: tipe data, selain var, ada let dan const
+name: nama variabel, a
+john: isi variabel nya (value nya), value isinya bisa 
+angka: 1,2,3, 
+string: "ayam", 
+boolean: true, false
+int, 
+float, 
+objec: {first: ampugh, last: rakan}
+dan array: [1,2]
+
+peraturan: 
+var ga boleh ada spasi
+var cuma bole diawali dengan letter, underscore, dan $
+var cuma bole mengandung letter, number, underscore, dan $
+
+cara print di js = console.log(xxxxx) (xxx nya bisa diisi variabel, atau isi string, atau isi apa aja)
+
+variabel itu case-sensitive
+
+dalam js dapat melakukan berbagai operasi, salah satunya adalah operasi aritmatik atau perhitungan matematika dengan menggunakan beberapa operator, seperti +, =, *, /, %, ++, --
+
+selain yang di atas, masih banyak sintaks untuk melakukan perhitugan seperti Math.pow utk pangkat, Math.floor, math.ceil, math.round, math.abs utk absolute, dll dll
+
+js juga menyediakan berbagai shortcut dalam penulisan, seperti
+
+a = a+b
+dapat diganti jadi
+a += b
+
+
+menulis string harus pakai "" atau '', kalo angka ga perlu
+
+kita juga dapat mengubah string jadi angka dengan menggunakan "parseInt". tujuannya agar data bisa diolah (tambah kali kurang dll)
+selain itu, angka jadi string juga bisa dengan cara menggunakan "toString".
+
+Conditional statements
+
+conditional statements yaitu pemilihan diantara dua pilihan, true dan false (boolean)
+
+dalam pengoperasian if statement, dapat menggunakan berbagai operator pemrbandingan, seperti 
+> : lebih dari
+< : kurang dari
+>= :lebih dari sama dengan
+<= : kurang dari sama dengan
+== : sama dengan
+=== : sama value sama tipe
+!= : tidak sama dengan
+!== :todal sama value tidak sama tipe
+
+&& : and
+|| : or
+! : not
+
+if:
+if statement digunakan untuk membuat perbandingan antara nilai dengan yang diharapkan dengan ngetes kondisinya apakah benar atau salah.
+
+let i = 1
+if(i>2){
+    console.log("waiya")
+}
+
+dia akan ngejalanin apabila di dalem kurung nilai nya true. kalo i nya dibawah 2, dia akan ngeprint waiya, kalo i nya lebih dari 1, dia ga akan ngeprin waiya.
+
+if bisa pake else dan ga pake else. else dipake jika ada kondisi apabila value dalem kurung if nya false. contoh: if hujan = true, pakai payung, else ga pake payung. kalo ga ujan berarti ga pake payung
+
+let i = 2
+if(i>2){
+    console.log("waiya")
+}else if(i>3){
+    console.log('waiyu')
+}else{
+    console.log('asdf')
+}
+
+kode diatas karena i nya = 2, dia ga lolos if pertama, tapi lolos if kedua, jadinya ngeprin waiyu. kalo misal i nya 1, dia akan ngeprin waiya, bodo amat dengan yang bawah mau bener atau gimana, asal yang lebih duluan ada yang true, yang lain diabaikan.
+
+
+switch:
+digunakan untuk input yang biasanya uda fix fix gitu seperti petani, sopir dll dll, ga yang logika itung2an kaya i>2 dll
+
+let pekerjaan = 'petani'
+let kerjaannya
+
+switch (pekerjaan === 'petani'){
+    case "petani":
+        kerjaannya = 'menanam'
+        break;
+    case "sopir":
+        kerjaannya ='menyetir'
+        break;
+    default:
+        kerjaannya = 'ada aja'
+        break;
+}
+console.log(kerjaannya)
+
+
+tipe-tipe falsy: '', null, NaN, 0, undefined
+tipe-tipe truthy: smua number selain 0, smua number selain empty string, array kosong [], dan obj kosong {}
+
+if eternary, nulis biar lebih ringkas
+contoh:
+ let tes = 'a'
+ let tes2 = tes%2? 'ganjil' : 'genap'
+ console.log(tes2)
+
+sama dengan
+if(tes){
+    tes2='isi'
+}else{
+    tes2='kosong'
+}
+console.log(tes2)
+
+
+Loop:
+
+sequence instruksi yang dilakukan terus menerus atau berulang sampe kondisi dimana dia false itu terpenuhi.
+fungsi loop untuk 
+
+analogi: kalo laper, makan, nambah makan terus sampe kondisi perut tidak laper. saat udah tidak laper. akan stop
+
+beda dengan if adalah, kalo if cuma sekali, kalo looping akan jalan terus sampe kondisinya false.
+
+di loop ada 2, 
+counted: for
+uncounted: while dan do while
+
+contoh print while 1-5
+let angka = 1
+
+while(angka<6){
+pakai "+" jadinya string, pakai "," jadinya number 
+    console.log('count- '+angka)
+    angka++
+}
+karena di luar kurawal, hasilnya 6
+console.log('terakhir' ,angka)
+
+untuk membalik -> while(!(angka<6))
+
+while: kaya if condition, tapi ngulang. selama kondisi nya true, akan looping. kalo udah false baru berenti. while ini ngeloop karena ada 
+" angka++ " 
+kalau di case ini
+
+
+
+
+do while
+let angka = 1
+
+do{
+    console.log(angka)
+    angka++
+}while(angka<5)
+
+console.log('line ini')
+
+beda do-while dengan while adalah:
+do-while: mulai ngecek setelah eksekusi pertama, jadi do-while akan selalu run minimal seklai
+while: cek dulu baru run. kalau salah dari pertama, ga run samsek.
+
+<!-- alur: cek i<6, jika iya -> print, -> i++ -> cek lagi) -->
+for (let i = 1; i < 6; i++) {
+    console.log('count- '+i)    
+}
+
+for (let i = -5; i < 0; i++) {
+    console.log('count- '+(i*-1))   
+}
+
+for: 
+statement 1: menjelaskan kondisi isi variabel nya, digunakan utk initialisasi, mulai nya dari berapa
+statement 2: menjelaskan kondisinya, apakah st.1 memenuhi kondisi di st.2, kalo memenuhi (true) lanjut, kalo ga memenuhi (false) berhenti.
+statement 3: increment nya, entah ++ atau --, jadi awalnya st1 di loop pertama nilainya 1, kalau di ++ di loop selanjutnya jadi 2, lalu di cek di statement 2 apakah memenuhi apa ngga. selama memenuhi akan nambah terus.
+
+
+looping dilakukan karena speed, space, dan maintainability nya lebih baik. karena kalau ga pake loop, maka ngubah2 fungsi bakal ribet karena satu-satu. makan space juga krn makan bnyk line.
+
+Array:
+karena cape ngetik dan nge state data satu satu kalo data nya banyak, array dipake utk nyimpen data yang banyak dlm 1 wadah buat dipanggil nanti nya
+
+array ditulis seperti ini
+let buahs = ['jeruk','stoberi','mangga']
+keterangan: 
+punya nama: buahs
+dibagi 3 bagian
+tiap bagian (jeruk stoberi) punya nomor
+menyimpen berbagai jenis data
+
+let wadahs = [1,'jeruk',[1,20]]
+
+bisa dicampur2 string, number, bisa array dalem array
+
+di array terdapat indeks, indeks adalah nomor lokasi nya si isi array
+
+indeks mulainya nya dari 0
+
+
+cara panggilnya: 
+let things = ['buku','pena','pensil']
+
+console.log(things) -> manggil semua isi array
+console.log(things[0]) -> manggil buku
+console.log(things[1]) -> manggil pena
+console.log(things[2]) -> manggil pensil
+
+ganti isi array
+things[0] = "laptop"
+
+tambah array
+things[3] = "napkin"
+console.log(things)
+
+cek panjang isi array, instead of i > 5; menggunakan i > things.length
+console.log(things.length)
+baca panjang isi array pertama, karena string adalah array
+console.log(things[0].length)
+
+memasukan array dr belakang (terakhir)
+things.push('jacket')
+
+atau things[things.length] = 'jacket'
+console.log(things)
+
+menghapus array dr belakang (terakhir)
+things.pop()
+console.log(things)
+
+splice:
+let things = ['buku', 'pena', 'pensil', 'baju']
+
+2: array keberapa yang mau dimasukin; 0: berapa yang mau dihapus, 
+kalau 1 = menghapus pensil (dari array 2(yang pertama)); kacamata: yang mau diisi)
+
+things.splice(2,0,'kacamata')
+console.log(things)
+
+1: array keberapa yang mau dimasukin; 2: berapa yang mau dihapus, 
+kalau 2 = menghapus pensil dan baju (dari array 2(yang pertama));
+things.splice(2,2)
+console.log(things)
+
+slice (mengambil pena dan pensil saja; 1: indeks ke-berapa; 3: 3 nya ga masuk)
+harus buat variabel baru (newThings)
+let newThings = things.slice(1,3)
+console.log(newThings)
+
+kalau mau ambil sampai ending
+let newThings = things.slice(1)
+
+array 2 dimensi 
+ 
+let things = [
+    ['red pen', 'blue pen'],
+    ['analog clock', 'digi clock'],
+    ['futsal shoes', 'badminton shoes']
+]
+
+cara panggilnya 
+console.log(things[1][1]) -> manggil digi clock
+
+
+function:
+
+sebuah template fungsi yang bs ditempel nanti di tpt yg diinginkan,kelebihannya adalah karena uda ada template, jadi lebih cepat dan lebih sedikit line. yang sulit adalah buat function nya. kata kunccinya adalah akan digunakan berulang-ulang.
+dengan adanya function ga capek tulis berulang kali
+
+ibarat blender, ngejus bisa ga pake blender/ manual, tapi capek. dengan blender lebih mudah dan cepat. tapi yang sulit adalah membuat blender nya itu
+
+typeof(), prompt(), parseInt() merupakan function
+memanggil function dicirikan dengan ()
+
+sintaks:
+const myFunction = () => {                     <- function tanpa parameter
+    return true
+}
+myFunction()                                    <- manggil
+console.log(myFunction())
+dalam function bagusnya pake const, karena gabisa diubah-ubah
+
+return digunakan agar balik ke fungsi, kalo gada return, dijalanin dan disimpen, tapi gak di tampilin
+semua di bawah return tidak dibaca
+
+kalo return false, mau gimana isi codingan nya, tetap akan false
+
+contoh pengaplikasian:
+
+function merupakan template, variabel boleh sama dgn yg function lain
+const kurangan = (angka1,angka2)=>{    <- angka1 dan 2 merupakan parameter
+    return angka1-angka2
+}
+
+const tambahan = (angka1,angka2)=>{
+    return angka1+angka2
+}
+
+const kalian = (angka1,angka2)=>{
+    return angka1*angka2
+}
+const total = (angka1, angka2, angka3, angka4)=>{
+    return tambahan(angka1,angka2)+kurangan(angka3,angka4)
+}
+
+console.log(total(5,6,7,2)) <-melakukan pengurangan dan penambahan di fungsi total
+
+
+call back
+
+memanggil kembali fungsi2
+cb1 dan cb2 ekspektasinya adalah function tmabahan dan kurangan di atas
+const total = (cb1,cb2,angka1,angka2)=>{
+    
+    return cb1(angka1,angka2) + cb2(angka1,angka2)
+}
+
+
+console.log(total(tambahan,kalian,2,10))
+jadinya ngestate function nya di sini ^^
+
+ForEach
+kaya for loop, for each juga ga ada break dan continue
+untuk manggil fungsi utk tiap elemen di array
+
+let angka = [1,2,3,4,5]
+nums.forEach((val)) => {
+    console.log(`loop ${val})
+} -> manggil 1,2,3,4,5
+
+didalem kurung itu ada 3 isi, val: value, index: urutan nya, array:seluruh array
+
+biasanya yg prtama diisi val, atau elemen.
+
+mapping
+merubah isi array jadi array baru yang kita mau. mau number -> number, number -> string, dll dll
+let angka = [1,2,3,4,5]
+let angkaX2 = angka.map((val)=>{
+    return val *2
+}) -> berubah jadi 2,4,6,8,10
+
+let angkaHalf=angka.map((val)=>{
+    return val /2
+}) -> berubah jadi .5,1,1.5,2,2.5
+
+let angkaJenis=angka.map((val)=>{
+    return val%2==0 ? 'even' : 'odd'
+
+}) ->  berubah jadi even odd
+ 
+
+console.log(angka)
+console.log(angkaX2)
+console.log(angkaHalf)
+console.log(angkaJenis)
+
+Filter
+filter pasti return array
+callaback function di filter harus return boolean
+let deret = [1,2,3,4,5]
+
+let newDeret = deret.filter((val)=>val % 2 === 1)
+
+console.log(newDeret)
+
+Sort
+untuk mengurutkan, bisa terbesar ke terkecil atau sebaliknya
+
+let things = [102,31,15,50,316]
+
+things.sort((a,b)=>a-b)
+console.log(things)
+
+
+Object:
+
+analogi: orang adalah objek
+orang punya properties seperti nama, tanggal lahir, hobi, golongan darah dll, dan punya method seperti suara, berjalan, dll
+
+properties  -> semua org punya properties sama, tapi isinya beda2
+orang.nama = ampuh
+orang.tglLahir = 2 juli
+
+method      -> semua orang puyna metod sama, tapi performed at different time
+orang.suara()
+orang.jalan()
+
+cara buat Object
+
+let person1= {
+    fullName: "martinelli",
+    nationality: "italy",
+    age: 20,
+    // array, biar isinya lebih dari 1
+    hobbies:['fishing','lying'],
+    
+    // variasi method
+    retired :()=>{
+        return this.age *2
+    },
+
+    // contoh obj dalam obj 
+    account: {
+        username: 'martiNelli9',
+        password: 'stronger',
+    }
+}
+
+console.log('cara panggil 1:',person1.nationality)
+console.log('cara panggil 2:',person1["nationality"])
+
+cara panggil obj dalam obj
+console.log(person1.account.password)
+
+cara panggil array dalam obj
+console.log(person1.hobbies[0])
+
+cara panggil metod
+console.log(retired()) undefined karena tidak return
+person1.retired() 
+
+panggil hobi pake prop
+let prop = 'hobbies'
+console.log(person1[prop])
+
+
+console.log(person1)
+console.log(person1.fullName)
+
+
+
+
+class
+template membuat object. class mengkategorikan.
+
+
+by declaration:
+class Manusia{
+    constructor(name, birthDate, nationality){
+        this.name = name
+        this.birthDate = birthDate
+        this.nationality = nationality
+
+    }
+
+    suaraLahir=()=>{
+        console.log('nangis')
+    }
+}
+
+let manusia1 = new Manusia('Pele','1950-07-31','Brazil')
+let manusia2 = new Manusia('Romario','1951-07-01','Brazil')
+
+class juga bisa menurunkan isinya dengan extends. gunanya adalah kalo ada beberapa class yang memiliki fitur mirip. seperti misal pemain bola dan artis, meereka punya bbrp kesamaan seperti nama, BoD, nationality. nah 3 ini masuk kedalam Manusia dan diturunkan menggunakan extends. yang bedain 2 itu cma dominant food dan jenis artis sepert di bawah.
+
+class FootballPlayer extends Manusia{
+    constructor(name,birthDate,nationality,dominantFoot){
+        super(name,birthDate,nationality)
+        this.dominantFoot = dominantFoot
+    }
+    
+}
+
+class Artist extends Manusia{
+    constructor(name,birthDate,nationality,artistType){
+        super(name,birthDate,nationality)
+        this.artistType = artistType
+    } 
+}
+let footballPlayer1 = new FootballPlayer('Romario','1951-07-01','Brazil', 'Left')
+let penyanyi1 = new Artist ('Isyana', '1990-05-21', 'Indonesia', 'Singer')
+
+manusia1.suaraLahir()
+console.log(footballPlayer1)
+console.log(penyanyi1)

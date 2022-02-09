@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR Day 5</title>
+</head>
+<body>
+    <h1>Purwadhika</h1>
+</body>
+<script>
+    //list nama buah
+    let buahs = [
+    { name: "Apel", harga: 10000, stock: 20 },
+    { name: "Anggur", harga: 15000, stock: 20 },
+    { name: "Jeruk", harga: 20000, stock: 20 },
+    ]
+    let carts = []
+
+    // fungsi looping buah
+    const fungsiBuah = () => {
+        let output =""
+        buahs.forEach((element,i) => {
+            output +=`${i+1}. ${element.name} : Rp. ${element.harga}, Stock: ${element.stock} pcs\n`
+        })
+        return output
+    }
+    // fungsi looping cart
+    const fungsiCart = () => {
+        let output = ""
+        carts.forEach((element, i) => {
+        output += `${i + 1}. ${element.name} : Rp. ${element.harga}, Jumlah ${
+          element.qty} pcs\n`
+      })
+      return output
+    }
+    // fungsi looping belanja
+    const fungsiBelanja = () => {
+        let output = ""
+        carts.forEach((element,i) => {
+        output+=`${i+1}. ${element.name} : ${element.harga} X Rp. ${element.qty} = Rp.${element.qty*element.harga}\n`
+        })
+        return output
+    }   
+    // fungsi looping total -> harga x qty
+    const totalOpt = () => {
+      let total = 0;
+      carts.forEach((element) => {
+        total += element.harga * element.qty;
+      })
+      return total
+    }  
+    //alert selamat datang
+    alert ('Selamat Datang')
+
+    let confirmUtama
+    do {
+        let menuUtama = prompt(`Menu utama\n`+`1. List Buah\n`+`2. Tambah buah\n`+`3. Hapus Buah\n`+'4. Beli Buah\n'+'5. Exit')
+
+        //di modul selanjutnya bisa dibuat function
+        if(menuUtama == 1){
+            // feature List Buah (sekarang uda pakai fungsi)
+            let output = "List Buah:\n" + fungsiBuah();
+            alert(output)
+        }else if(menuUtama == 2){
+            // feature Tambah Buah
+            let namaBuah = prompt('Masukkan nama buah yang ingin ditambah')
+            let hargaBuah = prompt('Masukkan harga buah yang ingin ditambah')
+            let jumlahBuah = prompt('Masukkan jumlah buah yang ingin ditambah')
+            
+            // memasukkan array nama, harga, dan jumlah ke object buahs
+            buahs.push({name: namaBuah, harga: hargaBuah, stock: jumlahBuah})
+
+            let output = 'List Buah: \n' + fungsiBuah()
+            alert(output) 
+        }
+        else if(menuUtama == 3){
+            // feature Hapus Buah
+
+            let output = 'List Buah: \n'+ fungsiBuah()
+            output+='Masukkan nomor buah yang ingin dihapus'
+            let nomorHapus = prompt(output)
+            // konfirmasi menghapus
+            let confirmHapus = confirm(`Yakin ingin menghapus buah ${buahs[nomorHapus-1].name}?`)
+                
+            if(confirmHapus){
+                // fitur menghapus array
+                buahs.splice(nomorHapus-1,1)
+
+            }
+            // looping updated stock -> jadi fungsi
+            let output1 = 'List Buah: \n'+ fungsiBuah()
+                alert(output1) 
+        }
+        else if(menuUtama == 4){
+            // feature Beli Buah
+            let beliLagi
+            do{
+                let output = 'List Buah: \n'+ fungsiBuah()             
+                output+='Ingin membeli buah apa?'
+                let nomorBeli = prompt (output)
+                let qtyBeli = prompt (`Ingin membeli ${buahs[nomorBeli-1].name} berapa buah`)
+                // ganti array jadi object
+                carts.push({
+                    name: buahs[nomorBeli-1].name, 
+                    harga: buahs[nomorBeli].harga, 
+                    qty:qtyBeli
+                })
+                alert('Berhasil menambahkan barang ke dalam cart')
+        
+                // Feature Menampilkan Cart
+                 let output1 = 'List cart:\n'+ fungsiCart()
+                alert(output1)
+                
+                beliLagi = confirm('Ingin membeli lagi ?')
+            } while (beliLagi)
+
+            // Membuat total belanja
+            let total = totalOpt()
+            
+            while (true) {
+                let output ='Daftar Belanja :\n'+ fungsiBelanja()
+                output+=`total: Rp.${total}\n
+                Menunggu pembayaran ?`
+                let bayar = prompt(output)
+                
+                // parsing dari string to number
+                bayar = parseInt(bayar)
+                
+                // Logic pembayaran
+                if(bayar === total){
+                    alert(`Uang anda pas, Terimakasih telah berbelanja`)
+                    break
+                }else if (bayar > total){
+                    alert('Kembalian sebesar Rp. ' + (bayar-total))
+                    break
+                }else{
+                    alert(`Kekurangan bayar sebesar Rp.${total-bayar} `)
+
+                }   
+            }
+
+        }else if(menuUtama == 5){
+            confirmUtama = confirm('Yakin ingin keluar menu utama ?')
+        }else{
+            alert('Tolong masukkan input yang benar!')
+        }
+    } while (!confirmUtama);
+    alert('Terima Kasih')
+
+      
+</script>
+</html>

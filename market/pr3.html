@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR Day 3</title>
+</head>
+<body>
+    <h1>Purwadhika</h1>
+</body>
+<script>
+    //list nama buah
+    let namaBuah1 = 'Apel'
+    let namaBuah2 = 'Anggur'
+    let namaBuah3 = 'Jeruk'
+    //list harga buah
+    let hargaBuah1 = 10000
+    let hargaBuah2 = 15000
+    let hargaBuah3 = 20000
+    //stock buah
+    let stockBuah1 = 20
+    let stockBuah2 = 20
+    let stockBuah3 = 20
+    //alert selamat datang
+    alert ('Selamat Datang')
+    alert (`Daftar Buah:
+    1. ${namaBuah1} : Rp. ${hargaBuah1}, stock ${stockBuah1} pcs
+    2. ${namaBuah2} : Rp. ${hargaBuah2}, stock ${stockBuah2} pcs
+    3. ${namaBuah3} : Rp. ${hargaBuah3}, stock ${stockBuah3} pcs`)
+
+    //parseint untuk mengubah string
+    let qty1 = parseInt(prompt (`Ingin membeli berapa ${namaBuah1}?`))
+    while(qty1>stockBuah1){
+        qty1=parseInt(prompt(`${namaBuah1} melebihi stok!, silakan input kembali`))
+    }
+    
+    let qty2 = parseInt(prompt (`Ingin membeli berapa ${namaBuah2}?`))
+    while(qty2>stockBuah2){
+        qty2=parseInt(prompt(`${namaBuah2} melebihi stok!, silakan input kembali`))
+    }
+    
+    let qty3 = parseInt(prompt (`Ingin membeli berapa ${namaBuah3}?`))
+    while(qty3>stockBuah3){
+        qty3=parseInt(prompt(`${namaBuah3} melebihi stok!, silakan input kembali`))
+    }
+   
+    //total belanja
+        let total = (qty1*hargaBuah1)+(qty2*hargaBuah2)+(qty3*hargaBuah3)
+
+    // daftar belanja
+    alert (`Daftar Belanja:
+    1. ${namaBuah1} : ${qty1} x Rp. ${hargaBuah1} = Rp. ${qty1*hargaBuah1}
+    2. ${namaBuah2} : ${qty2} x Rp. ${hargaBuah2} = Rp. ${qty2*hargaBuah2}
+    3. ${namaBuah3} : ${qty3} x Rp. ${hargaBuah3} = Rp. ${qty3*hargaBuah3}
+    
+    Total: Rp. ${total}`)
+
+
+    //statement untuk kurang lebih dan sama
+    let bayar = parseInt(prompt (`Nominal uang yang dibayarkan:`))
+    let kurang = total-bayar
+    
+    // let selisih = total-bayar
+    
+    //logic untuk pembayaran
+    while(bayar<total){
+        alert (`Kekurangan bayar sebesar Rp. ${kurang}`)
+        bayar=bayar+parseInt(prompt(`Silahkan masukkkan kembali uang yang perlu dibayarkan sebesar Rp. ${kurang}`))
+        kurang=total-bayar
+    }
+    if(bayar>total){
+        alert (`Kembalian sebesar Rp. ${bayar-total}`)
+    }else{
+        alert (`Uang anda pas, Terimakasih telah berbelanja`)
+    }   
+    </script>
+</html>

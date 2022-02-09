@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </style>
+  </head>
+  <body>
+    Nama: &emsp;<input type="text" id="nama"><br><br>
+
+    Usia: &emsp;<input type="text" id="usia"><br><br>
+
+    Sex:  &emsp;<input type="radio" name="sex" value="Pria" /> Pria
+                <input type="radio" name="sex" value="Wanita" /> Wanita <br><br>
+
+    Job:  &emsp;<select id="job">
+        <option value="" hidden selected> Pilih profesi</option>
+        <option value="Guru">Guru</option>
+        <option value="CEO">CEO</option>
+        <option value="Seniman">Seniman</option>
+    </select>
+    <br><br>
+
+    Skill:  &emsp;
+    <input type="checkbox" name="skill" value="HTML"/> HTML
+    <input type="checkbox" name="skill" value="CSS"/> CSS
+    <input type="checkbox" name="skill" value="JavaScript"/> JavaScript
+    <br><br>
+
+    <button onclick="klikAja()">klik</button>
+    <p id="output"></p>
+  </body>
+  <script>
+    const klikAja = () =>{
+        let nama = document.getElementById('nama').value
+        let usia = document.getElementById('usia').value
+        let sex = document.getElementsByName('sex')
+        let sexChoice = ''
+        sex.forEach((el) => {
+            if(el.checked){
+                sexChoice = el.value
+            }
+        })
+        let job = document.getElementById('job').value
+
+        let skills = []
+        let skillEls = document.getElementsByName('skill')
+        skillEls.forEach((el) => {
+            if(el.checked){
+                skills.push(el.value)
+            }
+        })
+        document.getElementById('output').innerHTML=`
+        Nama    : ${nama} <br/>
+        Usia    : ${usia} <br/>
+        Sex     : ${sexChoice} <br/>
+        Job     : ${job} <br/>
+        Skill   : ${skills} <br/>
+        `
+    }
+    </script>
+    </html>
