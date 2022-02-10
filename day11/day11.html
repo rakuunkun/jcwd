@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Biodata Simple</title>
+    <style>
+        table, tr, td, th{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+
+        }
+        form{
+            /* 45% layar */
+            width: 45%;    
+            margin: 0 auto;
+        }
+
+    </style>
+    <script src="./day11_bioadata.js" defer></script>
+
+</head>
+<body>
+    <!--  -->
+    <form onsubmit="">
+        <!-- untuk membuat kotak -->
+        <fieldset>
+            <legend>Filter</legend>
+            Nama : <input type="text" oninput="filterByNama()" placeholder="Filter by Name" id="namaFilter"><br><br>
+            Usia : <input type="text" oninput="filterByUsiaMin()" placeholder="Filter by Usia Min"  id="usiaMinFilter">
+            <input type="text" oninput="filterByUsiaMax()" placeholder="Filter by Usia Max"  id="usiaMaxFilter"><br><br>
+            Pekerjaan :
+            <select id="pekerjaanFilter" onchange="filterByPekerjaan()">
+            </select>
+            <br><br>
+            <button onclick="clearFilter()">Clear Filter</button>
+        </fieldset>
+        <fieldset>
+            <legend>Input Data</legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><input type="text" 
+                            placeholder="Masukkan Nama" 
+                            id="inputNama" >
+                        </td>
+                        <td><input type="text" 
+                            placeholder="Masukkan Usia" 
+                            id="inputUsia" >
+                        </td>
+                        <td>
+                            <select id ="inputPekerjaan">
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br><br>
+            <button onClick="klikAja()">Submit</button><br><br>
+        </fieldset>
+        <fieldset>
+            <legend>Tabel Data</legend>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Nama.</th>
+                        <th>Usia</th>
+                        <th>Pekerjaan</th>
+                    </tr>
+                </thead>
+                <tbody id="data">
+
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market V 1.6</title>
+</head>
+<body>
+    <h1>Purwadhika</h1>
+</body>
+<script>
+
+    let categories = ['Cepat saji','Pakaian','Elektronik','Buah']
+    // class dan extends utk tiap kategori
+    class Products {
+        constructor(name,harga,stock,categoryId){
+            this.name = name
+            this.harga = harga
+            this.stock = stock
+            this.categoryId = categoryId
+        }
+    }
+    class CepatSaji extends Products {
+        constructor(name,harga,stock,categoryId,expired){
+            super(name,harga,stock,categoryId)
+            this.expired = expired
+        }
+    }
+    
+    class Pakaian extends Products {
+        constructor(name,harga,stock,categoryId,size){
+            super(name,harga,stock,categoryId)
+            this.size = size
+        }
+        
+    } class Elektronik extends Products {
+        constructor(name,harga,stock,categoryId,warranty){
+            super(name,harga,stock,categoryId)
+            this.warranty = warranty
+        }
+    }
+    
+    class Buah extends Products {
+        constructor(name,harga,stock,categoryId,sugarLvl){
+            super(name,harga,stock,categoryId)
+            this.sugarLvl = sugarLvl
+        }
+    }
+    
+    // let products = [
+    // { name: "Apel", harga: 10000, stock: 20 },
+    // { name: "Anggur", harga: 15000, stock: 20 },
+    // { name: "Jeruk", harga: 20000, stock: 20 },
+    // ]
+    // -> ubah yang buah doang jadi variasi elektronik dll
+    
+    let products = [
+        new CepatSaji('Noodle',20000,10,0,2024),
+        new Pakaian('Kemeja',100000,20,1,'L'),
+        new Elektronik('Smartphone',2000000,15,2,true),
+        new Buah('Apel',30000,10,3,'High')
+    ]
+
+    
+    let carts = []
+
+    // fungsi looping
+    const fungsiProducts = () => {
+        let output =""
+        products.forEach((element,i) => {
+            if(element.categoryId === 0){
+            output +=`${i+1}. ${element.name} : Rp. ${element.harga}, Expired: ${element.expired}, Stock: ${element.stock} pcs \n`
+        } else if(element.categoryId === 1){
+            output +=`${i+1}. ${element.name} : Rp. ${element.harga}, Size: ${element.size} Stock: ${element.stock} pcs\n`
+        }else if(element.categoryId === 2){
+            output +=`${i+1}. ${element.name} : Rp. ${element.harga}, Warranty: ${element.warranty}, Stock: ${element.stock} pcs\n`
+        }else if(element.categoryId === 3){
+            output +=`${i+1}. ${element.name} : Rp. ${element.harga}, Sugar Level: ${element.sugarLvl}, Stock: ${element.stock} pcs\n`
+        }
+    })
+    return output
+}
+    // fungsi looping cart
+    const fungsiCart = () => {
+        let output = ""
+        carts.forEach((element, i) => {
+        output += `${i + 1}. ${element.name} : Rp. ${element.harga}, Jumlah ${
+          element.qty} pcs\n`
+      })
+      return output
+    }
+    // fungsi looping belanja
+    const fungsiBelanja = () => {
+        let output = ""
+        carts.forEach((element,i) => {
+        output+=`${i+1}. ${element.name} : ${element.harga} X Rp. ${element.qty} = Rp.${element.qty*element.harga}\n`
+        })
+        return output
+    }   
+    // fungsi looping total -> harga x qty
+    const totalOpt = () => {
+      let total = 0;
+      carts.forEach((element) => {
+        total += element.harga * element.qty;
+      })
+      return total
+    }  
+    //alert selamat datang
+    alert ('Selamat Datang')
+
+    let confirmUtama
+    do {
+        let menuUtama = prompt(`Menu utama\n`+`1. List Product\n`+`2. Tambah Product\n`+`3. Hapus Product\n`+'4. Beli Product\n'+'5. Exit')
+
+        if(menuUtama == 1){
+            // feature List Product
+            let output = "List Product:\n" + fungsiProducts();
+            alert(output)
+        }else if(menuUtama == 2){
+            // feature Tambah Product
+
+            let output0 = 'Pilih Kategori\n'
+
+            categories.forEach((val,index)=>{
+                output0+= `${index+1}. ${val}\n`
+            })
+
+            let categoryChoice = prompt(output0)
+            let namaProduct = prompt('Masukkan nama product yang ingin ditambah')
+            let hargaProduct = prompt('Masukkan harga product yang ingin ditambah')
+            let jumlahProduct = prompt('Masukkan jumlah product yang ingin ditambah')
+            let tambahan
+
+            if(categoryChoice == 1){
+                tambahan = parseInt (prompt('Kapan expired?'))
+                products.push(new CepatSaji(namaProduct,hargaProduct,jumlahProduct,categoryChoice-1,tambahan))
+
+            }else if(categoryChoice == 2){
+                tambahan = parseInt (prompt('Size apa?'))
+                products.push(new Pakaian(namaProduct,hargaProduct,jumlahProduct,categoryChoice-1,tambahan))
+
+            }else if(categoryChoice == 3){
+                tambahan = parseInt (prompt('Apakah bergaransi?'))
+                products.push(new Elektronik(namaProduct,hargaProduct,jumlahProduct,categoryChoice-1,tambahan))
+
+            }else{
+                tambahan = parseInt (prompt('Sugar level?'))
+                products.push(new Buah(namaProduct,hargaProduct,jumlahProduct,categoryChoice-1,tambahan))
+            }
+
+            let output = 'List Product: \n' + fungsiProducts()
+            alert(output) 
+        }
+        else if(menuUtama == 3){
+            // feature Hapus Product
+
+            let output = 'List Product: \n'+ fungsiProducts()
+            output+='Masukkan nomor product yang ingin dihapus'
+            let nomorHapus = prompt(output)
+            // konfirmasi menghapus
+            let confirmHapus = confirm(`Yakin ingin menghapus product ${products[nomorHapus-1].name}?`)
+                
+            if(confirmHapus){
+                // fitur menghapus array
+                products.splice(nomorHapus-1,1)
+
+            }
+            // looping updated stock -> jadi fungsi
+            let output1 = 'List Product: \n'+ fungsiProducts()
+                alert(output1) 
+        }
+        else if(menuUtama == 4){
+            // feature Beli Product
+            let beliLagi
+            do{
+                let output = 'List Product: \n'+ fungsiProducts()             
+                output+='Ingin membeli product apa?'
+                let nomorBeli = prompt (output)
+                let qtyBeli = prompt (`Ingin membeli ${products[nomorBeli-1].name} berapa buah`)
+                // ganti array jadi object
+                carts.push({
+                    name: products[nomorBeli-1].name, 
+                    harga: products[nomorBeli-1].harga, 
+                    qty:qtyBeli
+                })
+                alert('Berhasil menambahkan barang ke dalam cart')
+        
+                // Feature Menampilkan Cart
+                 let output1 = 'List cart:\n'+ fungsiCart()
+                alert(output1)
+                
+                beliLagi = confirm('Ingin membeli lagi ?')
+            } while (beliLagi)
+
+            // Membuat total belanja
+            let total = totalOpt()
+            
+            while (true) {
+                let output ='Daftar Belanja :\n'+ fungsiBelanja()
+                output+=`Total: Rp.${total}\n
+                
+                Menunggu pembayaran:`
+                let bayar = prompt(output)
+                
+                // parsing dari string to number
+                bayar = parseInt(bayar)
+                
+                // Logic pembayaran
+                if(bayar === total){
+                    alert(`Uang anda pas, Terimakasih telah berbelanja`)
+                    break
+                }else if (bayar > total){
+                    alert('Kembalian sebesar Rp. ' + (bayar-total))
+                    break
+                }else{
+                    alert(`Kekurangan bayar sebesar Rp.${total-bayar} `)
+
+                }   
+            }
+
+        }else if(menuUtama == 5){
+            confirmUtama = confirm('Yakin ingin keluar menu utama ?')
+        }else{
+            alert('Tolong masukkan input yang benar!')
+        }
+    } while (!confirmUtama);
+    alert('Terima Kasih')
+
+      
+</script>
+</html>

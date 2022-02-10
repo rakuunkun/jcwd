@@ -42,15 +42,14 @@
     <table>
         <thead>
           <tr>
-            <th>No</th>
+            <th>No.</th>
             <th>Nama</th>
             <th>Umur</th>
             <th>Jenis Kelamin</th>
             <th>Pekerjaan</th>
           </tr>
-          
         </thead>
-        <tbody id='output'>
+        <tbody id="output">
           
         </tbody>
       </table>
@@ -67,15 +66,15 @@
         data.forEach((val,index)=>{
           output+=`
           <tr>
-            <td>${index+1}</td>
-            <td>${val.nama}<td/>
-            <td>${val.usia}<td/>
-            <td>${val.sex}<td/>
-            <td>${val.job}<td/>
+            <td>${index+1}
+            <td>${val.nama}
+            <td>${val.usia}
+            <td>${val.sex}
+            <td>${val.job}
               </tr>`
         })
   
-        document.getElementByID('output').innerHTML=output
+        document.getElementById('output').innerHTML=output
       }
       
 
@@ -86,7 +85,7 @@
           ${val} &ensp;`
         }).join('')
         // render jobs
-        let outputJobs = '<option value="" hidden selected>pilih profesi</option>'
+        let outputJobs = '<option value="" hidden selected>Pilih profesi</option>'
         jobs.forEach((val)=>{
             outputJobs+=` <option value="${val}">${val}</option>`
         })
@@ -95,10 +94,10 @@
         document.getElementById('sexes').innerHTML = outputSex
         document.getElementById('job').innerHTML = outputJobs
         
-        // render Data yang ada 
         renderData()
   
     }
+    
     initialRender()
 
 
@@ -116,12 +115,9 @@
 
         let job = document.getElementById('job').value
         
-        data.push ({nama,usia,sex:sexChoice,job:job}
-        
-        )
+        data.push ({nama,usia,sex:sexChoice,job})
         renderData();
-      };
-  
+      }
   
     </script>
     </html>
