@@ -24,13 +24,13 @@
 </head>
 <body>
     <!--  -->
-    <form onsubmit="">
+    <div onsubmit="">
         <!-- untuk membuat kotak -->
         <fieldset>
             <legend>Filter</legend>
             Nama : <input type="text" oninput="filterByNama()" placeholder="Filter by Name" id="namaFilter"><br><br>
-            Usia : <input type="text" oninput="filterByUsiaMin()" placeholder="Filter by Usia Min"  id="usiaMinFilter">
-            <input type="text" oninput="filterByUsiaMax()" placeholder="Filter by Usia Max"  id="usiaMaxFilter"><br><br>
+            Usia : <input type="number" oninput="filterByUsia()" placeholder="Filter by Usia Min"  id="usiaMinFilter">
+            <input type="number" oninput="filterByUsia()" placeholder="Filter by Usia Max"  id="usiaMaxFilter"><br><br>
             Pekerjaan :
             <select id="pekerjaanFilter" onchange="filterByPekerjaan()">
             </select>
@@ -46,7 +46,7 @@
                             placeholder="Masukkan Nama" 
                             id="inputNama" >
                         </td>
-                        <td><input type="text" 
+                        <td><input type="number" 
                             placeholder="Masukkan Usia" 
                             id="inputUsia" >
                         </td>
@@ -58,7 +58,7 @@
                 </tbody>
             </table>
             <br><br>
-            <button onClick="klikAja()">Submit</button><br><br>
+            <button onClick="isiData()">Submit</button><br><br>
         </fieldset>
         <fieldset>
             <legend>Tabel Data</legend>
@@ -76,7 +76,7 @@
                 </tbody>
             </table>
         </fieldset>
-    </form>
+    </div>
     
 </body>
 </html>

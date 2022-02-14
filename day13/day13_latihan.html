@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Document</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="./day13_latihan.js"></script>
+    <style>
+        button{
+            background-color: lightgray;
+        }
+        button.disabled{
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+    <textarea oninput="hitungKomen()" placeholder="Tulis Komentar" id="komentar" cols="50" rows="5"></textarea>
+    <p id="batas">Huruf: 0/200</p>
+    <p id="kata">Kalimat: 0</p>
+    <button disabled>komentar</button>
+</body>
+</html>
